@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfriTalent—freelance</title>
+    <!-- lien vers bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!-- lien vers  csss -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- barre de navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+            <div class="container"> 
+                    <a class="navbar-brand" href="index.html">AfriTalent</a> 
+                    <button class="navbar-toggler" type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navMenu" 
+                    aria-controls="navMenu" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation"> 
+                    <span class="navbar-toggler-icon"></span> 
+                    </button> 
+                    <div class="collapse navbar-collapse" id="navMenu"> 
+                    <ul class="navbar-nav ms-auto"> 
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Accueil</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="freelances.html">Freelances</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> 
+                    </ul> 
+                    </div> 
+            </div> 
+        </nav>
+        <!-- contenu principale -->
+        <main>
+            <section id="barre de filtre">
+                    <div class="container py-3">
+                <div class="row g-2 align-items-end">
+
+                    <!-- Input recherche -->
+                    <div class="col-12 col-md-4">
+                        <label for="search" class="form-label">Recherche</label>
+                        <input type="text" id="search" class="form-control" placeholder="Rechercher...">
+                    </div>
+
+                    <!-- Filtre catégorie -->
+                    <div class="col-12 col-md-3">
+                        <label for="category" class="form-label">Catégorie</label>
+                        <select id="category" name="category" class="form-select">
+                            <option value="">-- Toutes les catégories --</option>
+                            <option value="1">Catégorie 1</option>
+                            <option value="2">Catégorie 2</option>
+                            <option value="3">Catégorie 3</option>
+                        </select>
+                    </div>
+
+                    <!-- Filtre statut -->
+                    <div class="col-12 col-md-3">
+                        <label for="status" class="form-label">Statut</label>
+                        <select id="status" name="status" class="form-select">
+                            <option value="">-- Tous les statuts --</option>
+                            <option value="actif">Actif</option>
+                            <option value="inactif">Inactif</option>
+                        </select>
+                    </div>
+
+                    <!-- Bouton -->
+                    <div class="col-12 col-md-2">
+                         <button class="btn btn-primary w-100">Filtrer</button>
+                    </div>
+
+                </div>
+              </div>
+            </section>
+            <section id="grilledeprofil">
+                    <div class="container">
+                        <div class="row g-3">
+
+                        <!-- carte 1 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F1.jpg" alt="image1">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Fatou Diagne</h5>
+                                <h6 class="card-subtitle mb-2 text-secondary">Développeuse web</h6>
+                                <p class="card-text">Développeur web freelance full stack, je prends en charge vos projets de A à Z — de la conception technique à la mise en production — en garantissant des interfaces rapides, accessibles et maintenables.</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- carte 2 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F2.jpg" alt="image2">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Aminata Sow</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Designer UI/UX</h6>
+                                <p class="card-text">Designer UI/UX freelance, je conçois des interfaces digitales pensées pour l'utilisateur final — intuitives, esthétiques et orientées résultats. Mon approche combine recherche utilisateur, bon sens produit et sens du détail visuel.</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- carte 3 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/H1.jpg" alt="image3">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Moussa Fall</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Développeur mobile</h6>
+                                <p class="card-text">Développeur mobile freelance, je conçois et développe des applications iOS et Android modernes, performantes et pensées pour une expérience utilisateur irréprochable..</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- carte 4 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F3.jpg" alt="image4">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Aïssatou Diallo</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Développeuse backend</h6>
+                                <p class="card-text">Développeur backend freelance avec plusieurs années d'expérience, je conçois des architectures solides, des APIs performantes et des systèmes capables de passer à l'échelle selon vos besoins..</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- carte 5 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/H2.jpg" alt="image5">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Omar Ndiaye</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">DevOps</h6>
+                                <p class="card-text">Ingénieur DevOps freelance, j'aide les équipes techniques à déployer plus vite, plus souvent et avec moins de risques grâce à des infrastructures cloud fiables et des pipelines d'intégration continue bien pensés.</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- carte 6 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F4.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Rokhaya Mbaye</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier..</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 7 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F5.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Nafi Mbaye</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier.</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 8 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/H3.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">saliou sow</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier.</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 9-->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F6.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">dibor Mbaye</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier..</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 9 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F7.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">ya seyda diop</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier..</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 10 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F8.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">fatou diop</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier..</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 11 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F9.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">fatou sow</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier.</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 12 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/H4.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">aziz ndiaye</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier.</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                         <!-- carte 13 -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100">
+                            <img class="card-img-top img-fluid" src="images/freelance/F10.jpg" alt="image6">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">salimata diop</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Data scientist</h6>
+                                <p class="card-text">Data Scientist freelance, je transforme vos données brutes en insights actionnables et en modèles prédictifs qui améliorent concrètement vos décisions métier..</p>
+                                <button class="btn btn-outline-primary">Voir le profil</button>
+                            </div>
+                            <div class="card-footer d-flex align-item-center justify-content-between">
+                                <div class="rating">
+                                    <input type="radio" name="note" value="5" id="start5">
+                                    <label for="start5">&#9733;</label>
+                                    <input type="radio" name="note" value="4" id="start4">
+                                    <label for="start4">&#9733;</label>
+                                    <input type="radio" name="note" value="3" id="start3">
+                                    <label for="start3">&#9733;</label>
+                                    <input type="radio" name="note" value="2" id="start2">
+                                    <label for="start2">&#9733;</label>
+                                    <input type="radio" name="note" value="1" id="start1">
+                                    <label for="start1">&#9733;</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                
+                        </div>
+                    </div>
+            </section> 
+        </main>
+     
+    <!-- lien bootstrap js  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  
+   <!-- lien vers mon  js -->
+    <script src="js/jssite.js"></script>
+</body>
+</html>
