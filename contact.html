@@ -10,13 +10,21 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- lien vers icones -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <!-- barre de navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+        <nav class="navbar navbar-expand-lg navbar-dark "> 
             <div class="container"> 
-                    <a class="navbar-brand" href="index.html">AfriTalent</a> 
+                     <a class="navbar-brand" href="index.html">
+                        <div class="logo">
+                            <div class="logo-icon"></div>
+                            <span class="logo-text">Afri<span class="logo-accent">Talent</span></span>
+                        </div>
+                    </a>
                     <button class="navbar-toggler" type="button" 
                     data-bs-toggle="collapse" 
                     data-bs-target="#navMenu" 
@@ -31,12 +39,13 @@
                         <li class="nav-item"><a class="nav-link" href="freelances.html">Freelances</a></li> 
                         <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li> 
                         <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li> 
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="btn-cta btn" href="inscription.html">Rejoindre AfriTalent</a></li> 
                     </ul> 
                     </div> 
             </div> 
         </nav>
-          <section id="form" class="py-5">
+          <section id="form" class="py-5 section-soft">
             <div class="container">
                 <h2 class="text-center mb-5">Formulaire de contact</h2>
                 <div class="row">
@@ -117,6 +126,61 @@
             </div>
             </div>
           </section>
+            <footer class=" text-white pt-5 pb-3">
+    <div class="container">
+        <div class="row g-4">
+
+        <div class="col-lg-4 col-md-6">
+            <h5>AfriTalent</h5>
+            <p>La plateforme qui connecte les meilleurs freelances africains aux entreprises du monde entier.</p>
+            <div class="d-flex gap-3">
+            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled">
+            <li><a href="index.html" class="text-white-50">Accueil</a></li>
+            <li><a href="freelances.html" class="text-white-50">Freelances</a></li>
+            <li><a href="tarifs.html" class="text-white-50">Tarifs</a></li>
+            <li><a href="about.html" class="text-white-50">À propos</a></li>
+            <li><a href="blog.html" class="text-white-50">Blog</a></li>
+            <li><a href="contact.html" class="text-white-50">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+            <h5>Ressources</h5>
+            <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Guide du freelance</a></li>
+            <li><a href="#" class="text-white-50">Centre d'aide</a></li>
+            <li><a href="#" class="text-white-50">Confidentialité</a></li>
+            <li><a href="#" class="text-white-50">Conditions d'utilisation</a></li>
+            </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <h5>Contact</h5>
+            <ul class="list-unstyled text-white-50">
+            <li><i class="bi bi-geo-alt-fill me-2"></i>Dakar, Sénégal</li>
+            <li><i class="bi bi-envelope-fill me-2"></i>contact@afritalent.com</li>
+            <li><i class="bi bi-telephone-fill me-2"></i>+221 33 123 45 67</li>
+            </ul>
+        </div>
+
+        </div>
+
+        <hr class="border-secondary mt-4" />
+        <p class="text-center text-white-50 mb-0">
+        &copy; <span id="currentYear"></span> AfriTalent. Tous droits réservés.
+        </p>
+
+    </div>
+</footer>
     <!-- lien bootstrap js  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  
    <!-- lien vers mon  js -->

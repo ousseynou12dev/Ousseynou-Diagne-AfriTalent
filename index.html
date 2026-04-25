@@ -10,12 +10,21 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- len icone bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- lien pour les fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- barre de navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+        <nav class="navbar navbar-expand-lg navbar-dark "> 
             <div class="container"> 
-                    <a class="navbar-brand" href="index.html">AfriTalent</a> 
+                   <a class="navbar-brand" href="index.html">
+                        <div class="logo">
+                            <div class="logo-icon"></div>
+                            <span class="logo-text">Afri<span class="logo-accent">Talent</span></span>
+                        </div>
+                    </a>
                     <button class="navbar-toggler" type="button" 
                     data-bs-toggle="collapse" 
                     data-bs-target="#navMenu" 
@@ -31,7 +40,7 @@
                         <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li> 
                         <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li> 
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        <li class="nav-item"><a class="btn btn-warning ms-2" href="inscription.html">Rejoindre AfriTalent</a></li> 
+                        <li class="nav-item"><a class="btn-cta btn" href="inscription.html">Rejoindre AfriTalent</a></li> 
                     </ul> 
                     </div> 
             </div> 
@@ -39,17 +48,41 @@
         <!-- contenu principale -->
         <main>
         <!-- Section Hero : accroche principale --> 
-        <section id="hero"> 
-            <div class="container py-5"> 
-                <h1>Trouvez le talent africain qu'il vous faut</h1> 
-                <p>AfriTalent connecte les freelances africains aux clients du 
-                monde entier.</p> 
-                <a href="freelances.html" class="btn btn-primary">Decouvrir les 
-                talents</a> 
-            </div> 
-        </section> 
+       <section id="hero">
+  <div class="container py-5">
+
+    <!-- Titre principal -->
+    <h1>Trouvez le talent africain qu'il vous faut</h1>
+
+    <!-- Sous-titre  -->
+    <h2>AfriTalent connecte les freelances africains aux clients du monde entier.</h2>
+
+    <!-- 2 boutons CTA  -->
+    <div class="hero-buttons">
+      <a href="freelances.html" class="btn btn-primary">Je suis Freelance</a>
+      <a href="freelances.html" class="btn btn1">Je cherche un Freelance</a>
+    </div>
+
+    <!-- Statistiques animées  -->
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="counter" data-target="2500">0</span>
+        <p>Freelances</p>
+      </div>
+      <div class="stat">
+        <span class="counter" data-target="800">0</span>
+        <p>Entreprises</p>
+      </div>
+      <div class="stat">
+        <span class="counter" data-target="12000">0</span>
+        <p>Missions réalisées</p>
+      </div>
+    </div>
+
+  </div>
+</section>
         <!-- Section Comment ça marche -->
-    <section id="how">
+    <section id="how" class="section-soft">
             <div class="container py-5">
                 <h2>Comment ça marche ?</h2>
                 <div class="row g-4">
@@ -139,7 +172,7 @@
         </div>
         </section>
     <!-- Section Statistiques --> 
-        <section id="statistiques"> 
+        <section id="statistiques" class="section-soft"> 
             <div class="container py-5"> 
                 <h2>AfriTalent en chiffres</h2> 
                 <div class="row text-center"> 
@@ -161,7 +194,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                     <div class="card p-4 mx-auto" style="max-width:600px;">
-                        <img src="images/pexels-cottonbro-5989941.jpg" width="50px" height="50px" alt="Aminata Diallo" class="testi-avatar" />
+                        <img src="images/testimonial/pexels-cottonbro-5989941.jpg" width="50px" height="50px" alt="Aminata Diallo" class="testi-avatar" />
                         <p>"AfriTalent m'a permis de trouver un développeur compétent en moins de 48h."</p>
                         <strong>Aminata Diallo</strong> — Directrice Marketing, Dakar
                         <div>★★★★★</div>
@@ -170,7 +203,7 @@
                     <div class="carousel-item">
                     <div class="card p-4 mx-auto" style="max-width:600px;">
                         
-                        <img src="images/pexels-tochukwu-ekeh-2149052634-33605542.jpg" width="50px" height="50px" alt="Kwame Osei" class="testi-avatar" />
+                        <img src="images/testimonial/pexels-tochukwu-ekeh-2149052634-33605542.jpg" width="50px" height="50px" alt="Kwame Osei" class="testi-avatar" />
                         <p>"Mon chiffre d'affaires a doublé en 6 mois grâce à AfriTalent."</p>
                         <strong>Kwame Osei</strong> — Freelance Designer UI/UX, Accra
                         <div>★★★★★</div>
@@ -178,7 +211,7 @@
                     </div>
                     <div class="carousel-item">
                     <div class="card p-4 mx-auto" style="max-width:600px;">
-                        <img src="images/pexels-tima-miroshnichenko-5439152.jpg"  width="50px" height="50px" alt="Fatou Touré" class="testi-avatar" />
+                        <img src="images/testimonial/pexels-tima-miroshnichenko-5439152.jpg"  width="50px" height="50px" alt="Fatou Touré" class="testi-avatar" />
                         <p>"Le système de paiement sécurisé m'a définitivement convaincu."</p>
                         <strong>Fatou Touré</strong> — Freelance Développeuse Web, Abidjan
                         <div>★★★★☆</div>
@@ -192,7 +225,7 @@
             </div>
         </section> 
         <!-- Section CTA Bandeau -->
-            <section id="cta-banner" class="bg-success text-white text-center py-5">
+            <section id="cta-banner" class="section-soft text-white text-center py-5">
             <div class="container">
                 <h2>Rejoignez des milliers de freelances qui transforment l'Afrique digitale</h2>
                 <p>Inscription gratuite · Aucune commission les 3 premiers mois · Assistance 7j/7</p>
@@ -201,7 +234,7 @@
             </section>
    </main>
    <!-- Pied de page --> 
-   <footer class="bg-dark text-white pt-5 pb-3">
+   <footer class=" text-white pt-5 pb-3">
     <div class="container">
         <div class="row g-4">
 
