@@ -136,3 +136,529 @@ h1, h2, h3 {
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-sm);
 }
+/* 
+   AFRITALENT — HERO SECTION */
+
+/* 
+   SECTION HERO
+   */
+#hero {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Grille : colonne texte (55%) + colonne image (45%) */
+#hero .container {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 0;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+}
+
+/* 
+   H1
+    */
+#hero h1 {
+  grid-column: 1;
+  font-family: var(--font-title);
+  font-size: clamp(32px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
+  margin-top: 0;
+}
+
+#hero h1 .highlight {
+  color: var(--color-bg-soft);
+  font-style: italic;
+}
+
+/* 
+   H2
+    */
+#hero h2 {
+  grid-column: 1;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 400;
+  color: var(--color-light);
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 0 var(--space-xl);
+  border: none;
+}
+
+/* -
+   BOUTONS CTA
+   - */
+.hero-buttons {
+  grid-column: 1;
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2xl);
+}
+
+.hero-buttons .btn {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 30px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-buttons .btn:hover  { transform: translateY(-3px); }
+.hero-buttons .btn:active { transform: translateY(0); }
+
+/* Bouton principal — vert */
+.hero-buttons .btn-primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  box-shadow: 0 6px 20px rgba(33, 78, 52, 0.45);
+}
+
+.hero-buttons .btn-primary:hover {
+  background: #1a3e29;
+  color: var(--color-white);
+  box-shadow: 0 10px 28px rgba(33, 78, 52, 0.60);
+}
+
+/* Bouton secondaire — contour blanc */
+.hero-buttons .btn1 {
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.hero-buttons .btn1:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+/* 
+   STATISTIQUES
+    */
+.hero-stats {
+  grid-column: 1;
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  padding-top: var(--space-lg);
+}
+
+.hero-stats .stat {
+  flex: 1;
+  padding: var(--space-md) var(--space-sm);
+  position: relative;
+  text-align: left;
+}
+
+.hero-stats .stat + .stat {
+  padding-left: var(--space-lg);
+}
+
+.hero-stats .stat + .stat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.hero-stats .stat .counter {
+  font-family: var(--font-title);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--color-white);
+  display: block;
+  line-height: 1.1;
+}
+
+.hero-stats .stat .counter::before {
+  content: '+';
+  color: var(--color-bg-soft);
+}
+
+.hero-stats .stat p {
+  font-size: 11px;
+  color: var(--color-light);
+  margin: var(--space-sm) 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* COLONNE DROITE — IMAGE */
+.hero-visual {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  position: relative;
+  align-self: stretch;
+  min-height: 420px;
+}
+
+/* Image principale */
+.hero-visual__img {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  right: 0;
+  bottom: 20px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.hero-visual__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Légère teinte sombre sur l'image pour les cartes flottantes */
+.hero-visual__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(1, 22, 56, 0.30) 0%,
+    transparent 60%
+  );
+}
+
+/* ---------------------------------------------------------
+   CARTES FLOTTANTES
+   --------------------------------------------------------- */
+
+/* Carte 1 — en haut à gauche de l'image */
+.hero-visual__card-1 {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background: rgba(1, 22, 56, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-width: 200px;
+  box-shadow: var(--shadow-card);
+  z-index: 10;
+  animation: floatA 4s ease-in-out infinite;
+}
+
+/* Carte 2 — en bas à droite de l'image */
+.hero-visual__card-2 {
+  position: absolute;
+  bottom: 60px;
+  right: 16px;
+  background: rgba(33, 78, 52, 0.92);
+  border: 1px solid rgba(223, 248, 235, 0.20);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  min-width: 165px;
+  box-shadow: var(--shadow-card);
+  z-index: 10;
+  animation: floatB 4.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.hero-visual__badge {
+  display: block;
+  font-size: 10px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px var(--space-sm);
+  border-radius: 20px;
+  background: rgba(223, 248, 235, 0.12);
+  color: var(--color-bg-soft);
+  margin-bottom: var(--space-sm);
+  width: fit-content;
+}
+
+.hero-visual__card-title {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-white);
+  display: block;
+}
+
+.hero-visual__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(33, 78, 52, 0.35);
+  border: 1px solid rgba(223, 248, 235, 0.25);
+  color: var(--color-bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-title);
+  flex-shrink: 0;
+}
+
+/* 
+   ANIMATIONS FLOTTANTES */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* 
+   ANIMATIONS D'ENTRÉE
+  */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#hero h1        { animation: fadeUp 0.6s ease both; animation-delay: 0.10s; }
+#hero h2        { animation: fadeUp 0.6s ease both; animation-delay: 0.22s; }
+.hero-buttons   { animation: fadeUp 0.6s ease both; animation-delay: 0.34s; }
+.hero-stats     { animation: fadeUp 0.6s ease both; animation-delay: 0.46s; }
+.hero-visual    { animation: fadeUp 0.8s ease both; animation-delay: 0.20s; }
+
+
+
+
+/* ============================================================
+   AFRITALENT — CSS à ajouter dans ton style.css
+   Sections : "Comment ça marche" (Bento Grid) + "Catégories"
+============================================================ */
+
+
+/* ── BENTO GRID — Comment ça marche ── */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 16px;
+}
+
+/* Carte 01 : colonne gauche, s'étale sur 2 lignes */
+.bento-card-01 { grid-column: 1; grid-row: 1 / 3; }
+
+/* Cartes 02 et 03 : colonne droite */
+.bento-card-02 { grid-column: 2; grid-row: 1; }
+.bento-card-03 { grid-column: 2; grid-row: 2; }
+
+/* Carte 04 : pleine largeur en bas */
+.bento-card-04 {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* Base commune à toutes les cartes bento */
+.bento-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(1, 22, 56, 0.16);
+}
+
+/* Variante sombre — carte 01 */
+.bento-card-01 {
+  background-color: var(--color-primary);
+  border-color: transparent;
+  justify-content: center;
+}
+
+.bento-card-01 h4  { color: var(--color-white); }
+.bento-card-01 p   { color: var(--color-light); }
+.bento-card-01 i   { color: var(--color-bg-soft); }
+
+/* Variante accent — carte 04 */
+.bento-card-04 {
+  background-color: var(--color-accent);
+  border-color: transparent;
+}
+
+.bento-card-04 h4  { color: var(--color-white); }
+.bento-card-04 p   { color: rgba(255, 255, 255, 0.75); }
+.bento-card-04 i   { color: var(--color-bg-soft); }
+
+.bento-card-04__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+/* Numéros d'étape */
+.step-number {
+  font-family: var(--font-title);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.12;
+  display: block;
+}
+
+.bento-card-01 .step-number,
+.bento-card-04 .step-number {
+  color: var(--color-bg-soft);
+  opacity: 0.35;
+  font-size: 52px;
+}
+
+/* Badge flottant (carte 01) */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(223, 248, 235, 0.12);
+  border: 1px solid rgba(223, 248, 235, 0.20);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-bg-soft);
+  width: fit-content;
+  margin-top: var(--space-sm);
+}
+
+
+
+
+/* ── CATÉGORIES DE SERVICES ── */
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cat-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+  transition:
+    transform    0.22s ease,
+    box-shadow   0.22s ease,
+    border-color 0.22s ease;
+}
+
+/* Fond doux qui monte au hover */
+.cat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-soft);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  z-index: 0;
+}
+
+.cat-card > * { position: relative; z-index: 1; }
+
+.cat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(1, 22, 56, 0.14);
+  border-color: var(--color-accent);
+}
+
+.cat-card:hover::before { opacity: 1; }
+
+/* Icône dans un carré arrondi */
+.cat-icon-wrap {
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-bg-soft);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--color-accent);
+  transition: background-color 0.22s ease, transform 0.22s ease, color 0.22s ease;
+  flex-shrink: 0;
+}
+
+.cat-card:hover .cat-icon-wrap {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  transform: scale(1.1) rotate(-4deg);
+}
+
+/* Titres et textes */
+.cat-card h4 {
+  font-family: var(--font-title);
+  font-size: 15px;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.cat-card p {
+  font-size: 13px;
+  color: var(--color-secondary);
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* Flèche qui glisse depuis la droite */
+.cat-arrow {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  opacity: 0;
+  font-size: 18px;
+  color: var(--color-accent);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.cat-card:hover .cat-arrow {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
