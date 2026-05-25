@@ -663,18 +663,10 @@ h1, h2, h3 {
   transform: translateY(-50%) translateX(0);
 }
         /* LA RESPONSIVITES */
-        /* ================================================================
-   AFRITALENT — RESPONSIVE DESIGN
-   Breakpoints :
-     Mobile  : ≤ 576px  (375px cible)
-     Tablette: ≤ 992px  (768px cible)
-     Desktop : > 992px  (1200px+ — styles de base déjà définis)
-   ================================================================ */
+       
 
 
-/* ────────────────────────────────────────────────────────────────
-   TABLETTE  (≤ 992px)
-   ──────────────────────────────────────────────────────────────── */
+/* TABLETTE  (≤ 992px) */
 @media (max-width: 992px) {
 
   /* --- NAVBAR : prépare le menu hamburger Bootstrap --- */
@@ -946,4 +938,90 @@ h1, h2, h3 {
     margin-top: var(--space-sm);
     text-align: center;
   }
+}
+
+
+/* ── 1. DARK MODE ─── */
+
+body.dark-mode {
+  background-color: #0D1F14;
+  color: #C8D8D0;
+}
+
+body.dark-mode .navbar {
+  background-color: #0A1A10;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #DFF8EB;
+}
+
+body.dark-mode .card,
+body.dark-mode .bento-card,
+body.dark-mode .cat-card {
+  background-color: #152B1E;
+  border-color: #2A4035;
+  color: #C8D8D0;
+}
+
+body.dark-mode .section-soft {
+  background-color: #0F2A1C;
+}
+
+body.dark-mode footer {
+  background-color: #0A1A10;
+}
+
+
+/* ── 2. BOUTON DARK MODE dans la navbar ─────── */
+
+
+#theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 6px;
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+/* ── 3. NAVBAR AU SCROLL ────────────────────── */
+
+.navbar--scrolled {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ── 4. BOUTON RETOUR EN HAUT ───────────────── */
+
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 25px;
+  z-index: 9999;
+
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background-color: #214E34;
+  color: white;
+  font-size: 20px;
+
+  display: none; /* caché par défaut, le JS l'affiche */
+  align-items: center;
+  justify-content: center;
+}
+
+#back-to-top:hover {
+  background-color: #1a3e29;
 }
