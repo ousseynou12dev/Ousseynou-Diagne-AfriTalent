@@ -1025,3 +1025,16 @@ body.dark-mode footer {
 #back-to-top:hover {
   background-color: #1a3e29;
 }
+/* État de départ : invisible + décalé vers le bas */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+ 
+/* État final : visible (classe ajoutée par le JS) */
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
