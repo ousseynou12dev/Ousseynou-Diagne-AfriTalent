@@ -212,3 +212,223 @@ if (sectionChiffres) {
   });
 
 }
+
+// VALIDATION DU FORMULAIRE DE CONTACT
+
+
+// On attend que la page soit complètement chargée
+document.addEventListener('DOMContentLoaded', function() {
+
+  // On récupère le formulaire
+  let formulaire = document.querySelector('form');
+
+  // Si le formulaire n'existe pas sur cette page, on arrête
+  if (!formulaire) return;
+
+  // On récupère chaque champ
+  let champNom     = document.getElementById('nom');
+  let champPrenom  = document.getElementById('prenom');
+  let champEmail   = document.getElementById('email');
+  let champSujet   = document.getElementById('sujet');
+  let champMessage = document.getElementById('message');
+
+  // ─────────────────────────────────────────────
+  // FONCTION : afficher une erreur sous un champ
+  // ─────────────────────────────────────────────
+  function montrerErreur(champ, texteErreur) {
+
+    // On met le champ en rouge
+    champ.classList.remove('is-valid');
+    champ.classList.add('is-invalid');
+
+    // On cherche si un message d'erreur existe déjà sous ce champ
+    let erreurExistante = champ.parentElement.querySelector('.erreur-message');
+
+    // Si pas encore de message, on le crée
+    if (!erreurExistante) {
+      let message = document.createElement('p');
+      message.classList.add('erreur-message');
+      message.style.color     = 'red';
+      message.style.fontSize  = '13px';
+      message.style.marginTop = '4px';
+      champ.parentElement.appendChild(message);
+    }
+
+    // On écrit le texte d'erreur
+    champ.parentElement.querySelector('.erreur-message').textContent = texteErreur;
+  }
+
+  
+  // FONCTION : effacer l'erreur d'un champ
+  
+  function effacerErreur(champ) {
+
+    // On met le champ en vert
+    champ.classList.remove('is-invalid');
+    champ.classList.add('is-valid');
+
+    // On supprime le message d'erreur s'il existe
+    let erreurExistante = champ.parentElement.querySelector('.erreur-message');
+    if (erreurExistante) {
+      erreurExistante.remove();
+    }
+  }
+
+  // FONCTION : valider l'email avec une regex
+
+  function emailEstValide(email) {
+    // La regex vérifie le format : quelquechose@domaine.extension
+    let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+
+  // QUAND ON SOUMET LE FORMULAIRE
+
+  formulaire.addEventListener('submit', function(event) {
+
+    // On empêche l'envoi réel du formulaire
+    event.preventDefault();
+
+    // On suppose que tout est valide au départ
+    let formulaireValide = true;
+
+    // --- Vérification du Nom ---
+    if (champNom.value.trim() === '') {
+      montrerErreur(champNom, 'Le nom est obligatoire.');
+      formulaireValide = false;
+    } else {
+      effacerErreur(champNom);
+    }
+
+    // --- Vérification du Prénom ---
+    if (champPrenom.value.trim() === '') {
+      montrerErreur(champPrenom, 'Le prénom est obligatoire.');
+      formulaireValide = false;
+    } else {
+      effacerErreur(champPrenom);
+    }
+
+    // --- Vérification de l'Email ---
+    if (champEmail.value.trim() === '') {
+      montrerErreur(champEmail, 'L\'email est obligatoire.');
+      formulaireValide = false;
+    } else if (!emailEstValide(champEmail.value.trim())) {
+      montrerErreur(champEmail, 'Format email invalide. Ex: nom@exemple.com');
+      formulaireValide = false;
+    } else {
+      effacerErreur(champEmail);
+    }
+
+    // --- Vérification du Sujet ---
+    if (champSujet.value === '') {
+      montrerErreur(champSujet, 'Veuillez choisir un sujet.');
+      formulaireValide = false;
+    } else {
+      effacerErreur(champSujet);
+    }
+
+    // --- Vérification du Message (minimum 20 caractères) ---
+    if (champMessage.value.trim() === '') {
+      montrerErreur(champMessage, 'Le message est obligatoire.');
+      formulaireValide = false;
+    } else if (champMessage.value.trim().length < 20) {
+      montrerErreur(champMessage, 'Le message doit contenir au moins 20 caractères. (' + champMessage.value.trim().length + '/20)');
+      formulaireValide = false;
+    } else {
+      effacerErreur(champMessage);
+    }
+
+  
+    // SI TOUT EST VALIDE → afficher message succès
+  
+    if (formulaireValide) {
+
+      // On cache le formulaire
+      formulaire.style.display = 'none';
+
+      // On crée le message de succès
+      let messageSucces = document.createElement('div');
+      messageSucces.style.textAlign    = 'center';
+      messageSucces.style.padding      = '40px';
+      messageSucces.style.background   = '#DFF8EB';
+      messageSucces.style.borderRadius = '12px';
+      messageSucces.style.border       = '1px solid #214E34';
+
+      messageSucces.innerHTML = `
+        <p style="font-size: 50px; margin-bottom: 16px;">✅</p>
+        <h3 style="color: #214E34;">Message envoyé !</h3>
+        <p style="color: #364156;">Merci, nous vous répondrons dans les plus brefs délais.</p>
+      `;
+
+      // On insère le message à la place du formulaire
+      formulaire.parentElement.appendChild(messageSucces);
+    }
+
+  });
+
+});
+//  Filtrage freelances (sans rechargement) ----
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  const searchInput  = document.getElementById('search');
+  const categorySelect = document.getElementById('category');
+  const statusSelect  = document.getElementById('status');
+  const filterBtn    = document.querySelector('#barre-de-filtre .btn-primary');
+
+  // Sélectionne toutes les cartes (colonnes)
+  function getCards() {
+    return document.querySelectorAll('#grilledeprofil .col-12');
+  }
+
+  function filtrer() {
+    const terme     = searchInput.value.toLowerCase().trim();
+    const categorie = categorySelect.value;
+    const statut    = statusSelect.value;
+
+    let visibles = 0;
+
+    getCards().forEach(function (col) {
+      const nom      = (col.dataset.name     || '').toLowerCase();
+      const cat      = (col.dataset.category || '').toLowerCase();
+      const st       = (col.dataset.status   || '').toLowerCase();
+
+      const matchNom  = terme === '' || nom.includes(terme);
+      const matchCat  = categorie === '' || cat === categorie;
+      const matchStat = statut === '' || st === statut;
+
+      if (matchNom && matchCat && matchStat) {
+        col.style.display = '';
+        visibles++;
+      } else {
+        col.style.display = 'none';
+      }
+    });
+
+    afficherMessageVide(visibles);
+  }
+
+  function afficherMessageVide(nb) {
+    let msg = document.getElementById('no-result');
+
+    if (nb === 0) {
+      if (!msg) {
+        msg = document.createElement('p');
+        msg.id = 'no-result';
+        msg.textContent = 'Aucun freelance ne correspond à votre recherche.';
+        msg.style.cssText = 'text-align:center;color:var(--bs-secondary);margin-top:2rem;width:100%;';
+        document.querySelector('#grilledeprofil .row').appendChild(msg);
+      }
+    } else if (msg) {
+      msg.remove();
+    }
+  }
+
+  // Filtrage au clic du bouton
+  if (filterBtn) filterBtn.addEventListener('click', filtrer);
+
+  // Filtrage en temps réel sur la recherche texte
+  if (searchInput) searchInput.addEventListener('input', filtrer);
+
+});
