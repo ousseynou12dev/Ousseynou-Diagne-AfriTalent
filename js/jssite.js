@@ -1,3 +1,20 @@
+/* ============================================================
+   AFRITALENT — SCRIPT PRINCIPAL
+   Sommaire :
+   1. Mode sombre (dark mode) + mémorisation du choix
+   2. Navbar qui rétrécit au scroll
+   3. Bouton "retour en haut"
+   4. Fondu en entrée des sections au scroll (IntersectionObserver)
+   5. Compteurs animés — page Accueil (.counter)
+   6. Compteurs animés — page À propos (#chiffres)
+   7. Validation du formulaire de contact
+   8. Filtrage des freelances (recherche / catégorie / statut)
+   9. Modale "Voir le profil" (freelances.html)
+   10. Année dynamique dans le footer
+   ============================================================ */
+
+
+/* ── 1. MODE SOMBRE (DARK MODE) ──────────────────────────── */
 
 // On récupère le bouton toggle dans la navbar
 let boutonTheme = document.getElementById("theme-toggle");
@@ -24,7 +41,7 @@ boutonTheme.addEventListener("click", function () {
 });
 
 
-// ── 2. NAVBAR AU SCROLL ───────────────────────
+/* ── 2. NAVBAR AU SCROLL ─────────────────────────────────── */
 
 // On récupère la navbar
 let navbar = document.querySelector(".navbar");
@@ -32,7 +49,7 @@ let navbar = document.querySelector(".navbar");
 // À chaque fois que l'utilisateur fait défiler la page
 window.addEventListener("scroll", function () {
 
-  // Si on a dépassé 60px vers le bas
+  // Si on a dépassé 60px vers le bas, on réduit la navbar
   if (window.scrollY > 60) {
     navbar.classList.add("navbar--scrolled");
   } else {
@@ -42,9 +59,9 @@ window.addEventListener("scroll", function () {
 });
 
 
-// ── 3. BOUTON RETOUR EN HAUT ──────────────────
+/* ── 3. BOUTON RETOUR EN HAUT ────────────────────────────── */
 
-// On récupère le bouton (à ajouter dans le HTML)
+// On récupère le bouton (présent dans le HTML de chaque page)
 let boutonHaut = document.getElementById("back-to-top");
 
 // À chaque scroll, on affiche ou cache le bouton
@@ -58,25 +75,22 @@ window.addEventListener("scroll", function () {
 
 });
 
-// Quand on clique dessus, on remonte en haut
+// Quand on clique dessus, on remonte en haut de la page en douceur
 boutonHaut.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 
-
-
-// 1. FADE-IN DES SECTIONS AU SCROLL
-
+/* ── 4. FADE-IN DES SECTIONS AU SCROLL ───────────────────── */
 
 // On sélectionne toutes les sections avec la classe "fade-in-section"
 let sections = document.querySelectorAll('.fade-in-section');
 
 // On crée un observateur qui regarde si une section entre dans l'écran
-let observateurFade = new IntersectionObserver(function(entries) {
+let observateurFade = new IntersectionObserver(function (entries) {
 
   // Pour chaque section observée
-  entries.forEach(function(entry) {
+  entries.forEach(function (entry) {
 
     // Si la section est visible à l'écran
     if (entry.isIntersecting) {
@@ -89,38 +103,36 @@ let observateurFade = new IntersectionObserver(function(entries) {
 });
 
 // On dit à l'observateur de surveiller chaque section
-sections.forEach(function(section) {
+sections.forEach(function (section) {
   observateurFade.observe(section);
 });
 
 
-
-// 2. COMPTEURS ANIMÉS — index.html
-
+/* ── 5. COMPTEURS ANIMÉS — index.html ────────────────────── */
 
 // On sélectionne tous les compteurs du hero
 let compteurs = document.querySelectorAll('.counter');
 
 // On crée un observateur pour les compteurs
-let observateurCompteur = new IntersectionObserver(function(entries) {
+let observateurCompteur = new IntersectionObserver(function (entries) {
 
-  entries.forEach(function(entry) {
+  entries.forEach(function (entry) {
 
     // Si le compteur est visible à l'écran
     if (entry.isIntersecting) {
 
-      let element    = entry.target;
-      let valeurFin  = parseInt(element.dataset.target); // ex: 2500
-      let valeurNow  = 0;    // on part de 0
-      let vitesse    = 30;   // millisecondes entre chaque mise à jour
+      let element   = entry.target;
+      let valeurFin = parseInt(element.dataset.target); // ex : 2500
+      let valeurNow = 0;    // on part de 0
+      let vitesse   = 30;   // millisecondes entre chaque mise à jour
 
       // On crée un intervalle qui incrémente le chiffre
-      let intervalle = setInterval(function() {
+      let intervalle = setInterval(function () {
 
         // On augmente la valeur de 1% de la valeur finale à chaque tick
         valeurNow += Math.ceil(valeurFin / 100);
 
-        // Si on a dépassé la valeur finale, on s'arrête pile
+        // Si on a dépassé la valeur finale, on s'arrête pile dessus
         if (valeurNow >= valeurFin) {
           valeurNow = valeurFin;
           clearInterval(intervalle); // on arrête l'intervalle
@@ -131,7 +143,7 @@ let observateurCompteur = new IntersectionObserver(function(entries) {
 
       }, vitesse);
 
-      // On arrête d'observer ce compteur (pour ne pas relancer)
+      // On arrête d'observer ce compteur (pour ne pas relancer l'animation)
       observateurCompteur.unobserve(element);
     }
 
@@ -140,33 +152,30 @@ let observateurCompteur = new IntersectionObserver(function(entries) {
 });
 
 // On dit à l'observateur de surveiller chaque compteur
-compteurs.forEach(function(compteur) {
+compteurs.forEach(function (compteur) {
   observateurCompteur.observe(compteur);
 });
 
 
+/* ── 6. COMPTEURS ANIMÉS — about.html ────────────────────── */
 
-// 3. COMPTEURS ANIMÉS — about.html
-
-
-
-// On sélectionne la section chiffres (elle existe seulement sur about.html)
+// On sélectionne la section chiffres (elle n'existe que sur about.html)
 let sectionChiffres = document.querySelector('#chiffres');
 
-// Si la section existe sur cette page
+// On ne fait ce traitement que si la section existe sur la page courante
 if (sectionChiffres) {
 
   // On sélectionne les grands chiffres dans cette section
   let grandsChiffres = sectionChiffres.querySelectorAll('.fs-1.fw-bold');
 
   // Pour chaque grand chiffre, on sauvegarde sa valeur originale
-  grandsChiffres.forEach(function(el) {
-    let texte   = el.textContent.trim(); // ex: "500+"  ou  "98%"
-    let nombre  = parseInt(texte);       // extrait le nombre : 500  ou  98
-    let suffixe = texte.replace(nombre, ''); // extrait le suffixe : "+"  ou  "%"
+  grandsChiffres.forEach(function (el) {
+    let texte   = el.textContent.trim();      // ex : "500+" ou "98%"
+    let nombre  = parseInt(texte);             // extrait le nombre : 500 ou 98
+    let suffixe = texte.replace(nombre, '');   // extrait le suffixe : "+" ou "%"
 
     // On sauvegarde dans des attributs data pour les retrouver plus tard
-    el.dataset.target  = nombre;
+    el.dataset.target = nombre;
     el.dataset.suffix  = suffixe;
 
     // On remet le texte à 0 avant l'animation
@@ -174,9 +183,9 @@ if (sectionChiffres) {
   });
 
   // On crée un observateur pour ces chiffres
-  let observateurAbout = new IntersectionObserver(function(entries) {
+  let observateurAbout = new IntersectionObserver(function (entries) {
 
-    entries.forEach(function(entry) {
+    entries.forEach(function (entry) {
 
       if (entry.isIntersecting) {
 
@@ -186,7 +195,7 @@ if (sectionChiffres) {
         let valeurNow = 0;
         let vitesse   = 30;
 
-        let intervalle = setInterval(function() {
+        let intervalle = setInterval(function () {
 
           valeurNow += Math.ceil(valeurFin / 100);
 
@@ -207,17 +216,17 @@ if (sectionChiffres) {
   });
 
   // On surveille chaque grand chiffre
-  grandsChiffres.forEach(function(chiffre) {
+  grandsChiffres.forEach(function (chiffre) {
     observateurAbout.observe(chiffre);
   });
 
 }
 
-// VALIDATION DU FORMULAIRE DE CONTACT
 
+/* ── 7. VALIDATION DU FORMULAIRE DE CONTACT ──────────────── */
 
 // On attend que la page soit complètement chargée
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
   // On récupère le formulaire
   let formulaire = document.querySelector('form');
@@ -232,9 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let champSujet   = document.getElementById('sujet');
   let champMessage = document.getElementById('message');
 
-  // ─────────────────────────────────────────────
-  // FONCTION : afficher une erreur sous un champ
-  // ─────────────────────────────────────────────
+  // Fonction : afficher une erreur sous un champ
   function montrerErreur(champ, texteErreur) {
 
     // On met le champ en rouge
@@ -258,9 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     champ.parentElement.querySelector('.erreur-message').textContent = texteErreur;
   }
 
-  
-  // FONCTION : effacer l'erreur d'un champ
-  
+  // Fonction : effacer l'erreur d'un champ
   function effacerErreur(champ) {
 
     // On met le champ en vert
@@ -274,20 +279,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // FONCTION : valider l'email avec une regex
-
+  // Fonction : valider l'email avec une regex
   function emailEstValide(email) {
     // La regex vérifie le format : quelquechose@domaine.extension
     let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   }
 
+  // Quand on soumet le formulaire
+  formulaire.addEventListener('submit', function (event) {
 
-  // QUAND ON SOUMET LE FORMULAIRE
-
-  formulaire.addEventListener('submit', function(event) {
-
-    // On empêche l'envoi réel du formulaire
+    // On empêche l'envoi réel du formulaire (pas de backend ici)
     event.preventDefault();
 
     // On suppose que tout est valide au départ
@@ -314,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
       montrerErreur(champEmail, 'L\'email est obligatoire.');
       formulaireValide = false;
     } else if (!emailEstValide(champEmail.value.trim())) {
-      montrerErreur(champEmail, 'Format email invalide. Ex: nom@exemple.com');
+      montrerErreur(champEmail, 'Format email invalide. Ex : nom@exemple.com');
       formulaireValide = false;
     } else {
       effacerErreur(champEmail);
@@ -339,9 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
       effacerErreur(champMessage);
     }
 
-  
-    // SI TOUT EST VALIDE → afficher message succès
-  
+    // Si tout est valide → on affiche un message de succès
     if (formulaireValide) {
 
       // On cache le formulaire
@@ -368,20 +368,26 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 });
-//  Filtrage freelances (sans rechargement) ----
+
+
+/* ── 8. FILTRAGE DES FREELANCES (sans rechargement de page) ── */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const searchInput  = document.getElementById('search');
+  const searchInput    = document.getElementById('search');
   const categorySelect = document.getElementById('category');
-  const statusSelect  = document.getElementById('status');
-  const filterBtn    = document.querySelector('#barre-de-filtre .btn-primary');
+  const statusSelect   = document.getElementById('status');
+  const filterBtn      = document.querySelector('#barre-de-filtre .btn-primary');
 
-  // Sélectionne toutes les cartes (colonnes)
+  // Si la barre de filtre n'existe pas sur cette page, on arrête
+  if (!searchInput || !categorySelect || !statusSelect) return;
+
+  // Sélectionne toutes les cartes (colonnes) de la grille de profils
   function getCards() {
     return document.querySelectorAll('#grilledeprofil .col-12');
   }
 
+  // Applique le filtre texte + catégorie + statut sur chaque carte
   function filtrer() {
     const terme     = searchInput.value.toLowerCase().trim();
     const categorie = categorySelect.value;
@@ -390,9 +396,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let visibles = 0;
 
     getCards().forEach(function (col) {
-      const nom      = (col.dataset.name     || '').toLowerCase();
-      const cat      = (col.dataset.category || '').toLowerCase();
-      const st       = (col.dataset.status   || '').toLowerCase();
+      const nom = (col.dataset.name     || '').toLowerCase();
+      const cat = (col.dataset.category || '').toLowerCase();
+      const st  = (col.dataset.status   || '').toLowerCase();
 
       const matchNom  = terme === '' || nom.includes(terme);
       const matchCat  = categorie === '' || cat === categorie;
@@ -409,6 +415,7 @@ document.addEventListener('DOMContentLoaded', function () {
     afficherMessageVide(visibles);
   }
 
+  // Affiche un message si aucun résultat ne correspond au filtre
   function afficherMessageVide(nb) {
     let msg = document.getElementById('no-result');
 
@@ -428,7 +435,67 @@ document.addEventListener('DOMContentLoaded', function () {
   // Filtrage au clic du bouton
   if (filterBtn) filterBtn.addEventListener('click', filtrer);
 
-  // Filtrage en temps réel sur la recherche texte
-  if (searchInput) searchInput.addEventListener('input', filtrer);
+  // Filtrage en temps réel pendant la saisie
+  searchInput.addEventListener('input', filtrer);
+
+  // Filtrage instantané au changement des menus déroulants
+  categorySelect.addEventListener('change', filtrer);
+  statusSelect.addEventListener('change', filtrer);
 
 });
+
+
+/* ── 9. MODALE "VOIR LE PROFIL" (freelances.html) ────────── */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // La modale n'existe que sur freelances.html
+  const modalProfil = document.getElementById('profilModal');
+  if (!modalProfil) return;
+
+  // Éléments internes de la modale à remplir dynamiquement
+  const modalImg         = document.getElementById('profilModalImg');
+  const modalNom         = document.getElementById('profilModalNom');
+  const modalSpecialite  = document.getElementById('profilModalSpecialite');
+  const modalBio         = document.getElementById('profilModalBio');
+  const modalTarif       = document.getElementById('profilModalTarif');
+
+  // Tous les boutons "Voir le profil" de la grille
+  const boutonsProfil = document.querySelectorAll('#grilledeprofil .btn-outline-primary');
+
+  boutonsProfil.forEach(function (bouton) {
+
+    bouton.addEventListener('click', function () {
+
+      // On remonte jusqu'à la carte pour récupérer ses informations
+      const carte = bouton.closest('.card, article.card');
+      if (!carte) return;
+
+      const img        = carte.querySelector('img');
+      const nom         = carte.querySelector('.card-title');
+      const specialite  = carte.querySelector('.card-subtitle');
+      const bio         = carte.querySelector('.card-text');
+      const tarif       = bouton.dataset.tarif || '';
+
+      // On remplit la modale avec les données de la carte cliquée
+      modalImg.src = img ? img.src : '';
+      modalImg.alt = img ? img.alt : '';
+      modalNom.textContent        = nom ? nom.textContent : '';
+      modalSpecialite.textContent = specialite ? specialite.textContent : '';
+      modalBio.textContent        = bio ? bio.textContent : '';
+      modalTarif.textContent      = tarif;
+
+    });
+
+  });
+
+});
+
+
+/* ── 10. ANNÉE DYNAMIQUE DANS LE FOOTER ──────────────────── */
+
+
+let elementAnnee = document.getElementById('currentYear');
+if (elementAnnee) {
+  elementAnnee.textContent = new Date().getFullYear();
+}

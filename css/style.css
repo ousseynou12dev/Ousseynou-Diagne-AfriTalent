@@ -1,13 +1,33 @@
+/* ============================================================
+   AFRITALENT — FEUILLE DE STYLE PRINCIPALE
+   Sommaire :
+   1. Import polices Google Fonts
+   2. Variables globales (:root)
+   3. Reset CSS
+   4. Composants communs (navbar, boutons, cartes, footer, logo)
+   5. Section Hero (page Accueil)
+   6. Bento grid "Comment ça marche"
+   7. Grille "Catégories de services"
+   8. Étoiles de notation (freelances.html)
+   9. Responsive (tablette / mobile)
+   10. Navbar hamburger
+   11. Mode sombre (dark mode)
+   12. Bouton "retour en haut" + animations au scroll
+   ============================================================ */
+
 /* ── 1. Import Google Fonts ── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap');
 
 /* ── 2. Variables dans :root ── */
 :root {
   /* --- Polices --- */
-  --font-body:    'Inter', sans-serif;           
-  --font-title:   'Playfair Display', serif;     
+  --font-body:    'Inter', sans-serif;
+  --font-title:   'Playfair Display', serif;
 
-  /* --- Couleurs --- */
+  /* --- Couleurs ---
+     5 couleurs principales de la palette : primary, secondary, light, bg-soft, accent.
+     Le blanc (--color-white) est une couleur neutre de base (texte/fond), pas une
+     couleur "de marque" — il n'est donc pas compté dans les 5 couleurs principales. */
   --color-primary:   #011638;
   --color-secondary: #364156;
   --color-light:     #CDCDCD;
@@ -15,21 +35,22 @@
   --color-accent:    #214E34;
   --color-white:     #FFFFFF;
 
-  /* --- Espacements  --- */
+  /* --- Espacements --- */
   --space-sm:  8px;
   --space-md:  16px;
   --space-lg:  24px;
   --space-xl:  48px;
   --space-2xl: 80px;
 
-  /* /* --- Rayons de bordure  */
+  /* --- Rayons de bordure --- */
   --radius-sm: 6px;
   --radius-md: 12px;
 
-  /* /* --- Ombre ─ */
+  /* --- Ombre --- */
   --shadow-card: 0 4px 20px rgba(1, 22, 56, 0.12);
 }
-/* reset css */
+
+/* ── 3. Reset CSS ── */
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +62,9 @@ body {
   color: var(--color-secondary);
 }
 
-/* ── 3. Application sur les composants ── */
+/* ============================================================
+   4. COMPOSANTS COMMUNS
+   ============================================================ */
 
 /* NAVBAR */
 .navbar {
@@ -53,7 +76,7 @@ body {
   z-index: 10000;
 }
 
-/* BOUTON CTA */
+/* BOUTON CTA (principal, fond vert) */
 .btn-cta {
   background-color: var(--color-accent);
   color: var(--color-white);
@@ -61,13 +84,22 @@ body {
   border-radius: var(--radius-sm);
 }
 
-/* SECTION fond doux */
+/* BOUTON secondaire (contour) */
+.btn1 {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+}
+
+/* SECTION à fond doux (vert pâle) */
 .section-soft {
   background-color: var(--color-bg-soft);
   padding: var(--space-2xl) var(--space-xl);
 }
 
-/* CARTE freelance */
+/* CARTE générique (freelance, tarif, etc.) */
 .card {
   background-color: var(--color-white);
   border: 1px solid var(--color-light);
@@ -75,12 +107,12 @@ body {
   padding: var(--space-lg);
   box-shadow: var(--shadow-card);
 }
+
 .card-img-top {
   width: 100%;         /* prend toute la largeur de la carte */
-  height: 200px;       
-  object-fit: cover;   /* zoom/recadre sans déformer l'image */
+  height: 200px;
+  object-fit: cover;    /* recadre l'image sans la déformer */
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-
 }
 
 /* FOOTER */
@@ -92,11 +124,11 @@ footer {
 
 /* TITRES */
 h1, h2, h3 {
-  font-family: var(--font-title);   
+  font-family: var(--font-title);
   color: var(--color-primary);
 }
 
-/* ── LOGO ── */
+/* LOGO (losange + texte) */
 .logo {
   display: flex;
   align-items: center;
@@ -133,19 +165,15 @@ h1, h2, h3 {
 .logo-accent {
   color: var(--color-bg-soft);
 }
-.btn1 {
-  background-color: transparent;
-  color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-sm);
-}
-/* 
-   AFRITALENT — HERO SECTION */
 
-/* 
-   SECTION HERO
-   */
+/* Texte de couleur accent (ex : tarif horaire sur les cartes freelance) */
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   5. SECTION HERO (page Accueil)
+   ============================================================ */
 #hero {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -166,9 +194,7 @@ h1, h2, h3 {
   padding-bottom: var(--space-xl);
 }
 
-/* 
-   H1
-    */
+/* Titre principal */
 #hero h1 {
   grid-column: 1;
   font-family: var(--font-title);
@@ -185,9 +211,7 @@ h1, h2, h3 {
   font-style: italic;
 }
 
-/* 
-   H2
-    */
+/* Sous-titre */
 #hero h2 {
   grid-column: 1;
   font-family: var(--font-body);
@@ -200,9 +224,7 @@ h1, h2, h3 {
   border: none;
 }
 
-/* -
-   BOUTONS CTA
-   - */
+/* Boutons CTA du hero */
 .hero-buttons {
   grid-column: 1;
   display: flex;
@@ -252,9 +274,7 @@ h1, h2, h3 {
   color: var(--color-white);
 }
 
-/* 
-   STATISTIQUES
-    */
+/* Statistiques (compteurs animés) */
 .hero-stats {
   grid-column: 1;
   display: flex;
@@ -306,7 +326,7 @@ h1, h2, h3 {
   letter-spacing: 0.05em;
 }
 
-/* COLONNE DROITE — IMAGE */
+/* Colonne droite — image + cartes flottantes */
 .hero-visual {
   grid-column: 2;
   grid-row: 1 / 3;
@@ -315,7 +335,6 @@ h1, h2, h3 {
   min-height: 420px;
 }
 
-/* Image principale */
 .hero-visual__img {
   position: absolute;
   top: 20px;
@@ -333,7 +352,7 @@ h1, h2, h3 {
   object-fit: cover;
 }
 
-/* Légère teinte sombre sur l'image pour les cartes flottantes */
+/* Teinte sombre sur l'image pour faire ressortir les cartes flottantes */
 .hero-visual__img::after {
   content: '';
   position: absolute;
@@ -345,11 +364,7 @@ h1, h2, h3 {
   );
 }
 
-/* 
-   CARTES FLOTTANTES
-    */
-
-/* Carte 1 — en haut à gauche de l'image */
+/* Carte flottante 1 — en haut à gauche de l'image */
 .hero-visual__card-1 {
   position: absolute;
   top: 48px;
@@ -367,7 +382,7 @@ h1, h2, h3 {
   animation: floatA 4s ease-in-out infinite;
 }
 
-/* Carte 2 — en bas à droite de l'image */
+/* Carte flottante 2 — en bas à droite de l'image */
 .hero-visual__card-2 {
   position: absolute;
   bottom: 60px;
@@ -422,21 +437,18 @@ h1, h2, h3 {
   flex-shrink: 0;
 }
 
-/* 
-   ANIMATIONS FLOTTANTES */
+/* Animations flottantes des cartes */
 @keyframes floatA {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+  50%      { transform: translateY(-8px); }
 }
 
 @keyframes floatB {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
+  50%      { transform: translateY(-6px); }
 }
 
-/* 
-   ANIMATIONS D'ENTRÉE
-  */
+/* Animation d'entrée (fondu + translation) */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -448,13 +460,9 @@ h1, h2, h3 {
 .hero-stats     { animation: fadeUp 0.6s ease both; animation-delay: 0.46s; }
 .hero-visual    { animation: fadeUp 0.8s ease both; animation-delay: 0.20s; }
 
-
-
-
-
-
-/* ── BENTO GRID — Comment ça marche ── */
-
+/* ============================================================
+   6. BENTO GRID — "Comment ça marche"
+   ============================================================ */
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -503,9 +511,9 @@ h1, h2, h3 {
   justify-content: center;
 }
 
-.bento-card-01 h4  { color: var(--color-white); }
-.bento-card-01 p   { color: var(--color-light); }
-.bento-card-01 i   { color: var(--color-bg-soft); }
+.bento-card-01 h4 { color: var(--color-white); }
+.bento-card-01 p  { color: var(--color-light); }
+.bento-card-01 i  { color: var(--color-bg-soft); }
 
 /* Variante accent — carte 04 */
 .bento-card-04 {
@@ -513,9 +521,9 @@ h1, h2, h3 {
   border-color: transparent;
 }
 
-.bento-card-04 h4  { color: var(--color-white); }
-.bento-card-04 p   { color: rgba(255, 255, 255, 0.75); }
-.bento-card-04 i   { color: var(--color-bg-soft); }
+.bento-card-04 h4 { color: var(--color-white); }
+.bento-card-04 p  { color: rgba(255, 255, 255, 0.75); }
+.bento-card-04 i  { color: var(--color-bg-soft); }
 
 .bento-card-04__content {
   display: flex;
@@ -524,7 +532,7 @@ h1, h2, h3 {
   flex: 1;
 }
 
-/* Numéros d'étape */
+/* Numéros d'étape (grand chiffre en filigrane) */
 .step-number {
   font-family: var(--font-title);
   font-size: 42px;
@@ -559,11 +567,9 @@ h1, h2, h3 {
   margin-top: var(--space-sm);
 }
 
-
-
-
-/* ── CATÉGORIES DE SERVICES ── */
-
+/* ============================================================
+   7. CATÉGORIES DE SERVICES
+   ============================================================ */
 .cat-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -582,14 +588,13 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-
   transition:
     transform    0.22s ease,
     box-shadow   0.22s ease,
     border-color 0.22s ease;
 }
 
-/* Fond doux qui monte au hover */
+/* Fond doux qui apparaît au survol */
 .cat-card::before {
   content: '';
   position: absolute;
@@ -631,7 +636,6 @@ h1, h2, h3 {
   transform: scale(1.1) rotate(-4deg);
 }
 
-/* Titres et textes */
 .cat-card h4 {
   font-family: var(--font-title);
   font-size: 15px;
@@ -646,7 +650,7 @@ h1, h2, h3 {
   opacity: 0.7;
 }
 
-/* Flèche qui glisse depuis la droite */
+/* Flèche qui glisse depuis la droite au survol */
 .cat-arrow {
   position: absolute;
   right: 18px;
@@ -662,14 +666,56 @@ h1, h2, h3 {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
 }
-        /* LA RESPONSIVITES */
-       
 
+/* ============================================================
+   8. ÉTOILES DE NOTATION (freelances.html)
+   Composant en CSS pur : 5 boutons radio cachés + labels étoile.
+   Le HTML liste les valeurs de 5 à 1 puis on inverse visuellement
+   l'ordre avec row-reverse pour que le survol "remplisse" les
+   étoiles de gauche à droite comme attendu par l'utilisateur.
+   ============================================================ */
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 2px;
+}
 
-/* TABLETTE  (≤ 992px) */
+.rating input {
+  /* on cache les vrais boutons radio, seuls les labels sont visibles */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rating label {
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-light);
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+/* étoile déjà sélectionnée et toutes celles avant elle (grâce à row-reverse) */
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #F5B301;
+}
+
+.rating label:hover {
+  transform: scale(1.15);
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+
+/* TABLETTE (≤ 992px) */
 @media (max-width: 992px) {
 
-  /* --- NAVBAR : prépare le menu hamburger Bootstrap --- */
+  /* --- NAVBAR --- */
   .navbar {
     padding: var(--space-md);
   }
@@ -703,7 +749,7 @@ h1, h2, h3 {
     height: 320px;
   }
 
-  /* Cartes flottantes : repositionnées pour tablette */
+  /* Cartes flottantes repositionnées pour tablette */
   .hero-visual__card-1 {
     top: 16px;
     left: 12px;
@@ -716,7 +762,7 @@ h1, h2, h3 {
     min-width: 145px;
   }
 
-  /* --- BENTO GRID : 2 colonnes → empilées --- */
+  /* --- BENTO GRID : réorganisé en 2 colonnes --- */
   .bento-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -738,10 +784,7 @@ h1, h2, h3 {
   }
 }
 
-
-/* ────────────────────────────────────────────────────────────────
-   MOBILE  (≤ 576px)
-   ──────────────────────────────────────────────────────────────── */
+/* MOBILE (≤ 576px) */
 @media (max-width: 576px) {
 
   /* --- Variables d'espacement réduites --- */
@@ -790,7 +833,7 @@ h1, h2, h3 {
     padding: 13px 20px;
   }
 
-  /* Stats : réduit légèrement les chiffres */
+  /* Stats : chiffres légèrement réduits */
   .hero-stats .stat .counter {
     font-size: clamp(20px, 6vw, 28px);
   }
@@ -808,7 +851,7 @@ h1, h2, h3 {
     height: 240px;
   }
 
-  /* Cartes flottantes : masquées sur très petit écran pour lisibilité */
+  /* Cartes flottantes masquées sur très petit écran (lisibilité) */
   .hero-visual__card-1,
   .hero-visual__card-2 {
     display: none;
@@ -837,7 +880,7 @@ h1, h2, h3 {
     grid-template-columns: 1fr;
   }
 
-  .cat-arrow { display: none; } /* flèche inutile sur touch */
+  .cat-arrow { display: none; } /* flèche inutile sur écran tactile */
 
   /* --- FOOTER --- */
   footer {
@@ -845,7 +888,7 @@ h1, h2, h3 {
     text-align: center;
   }
 
-  /* --- CARDS freelance --- */
+  /* --- CARTES freelance --- */
   .card {
     padding: var(--space-md);
   }
@@ -863,16 +906,7 @@ h1, h2, h3 {
   }
 }
 
-
-
-
-
-
-/* Sections avec padding adaptatif */
-.section-soft {
-  padding: var(--space-2xl) var(--space-xl);
-}
-/* RESPONSIVITE */
+/* Sections à padding adaptatif (repris ici pour les autres pages) */
 @media (max-width: 992px) {
   .section-soft {
     padding: var(--space-xl) var(--space-lg);
@@ -883,19 +917,16 @@ h1, h2, h3 {
   .section-soft {
     padding: var(--space-xl) var(--space-md);
   }
-}
 
-/* Titres de section responsifs */
-@media (max-width: 576px) {
+  /* Titres de section responsifs */
   h1 { font-size: clamp(24px, 8vw, 32px); }
   h2 { font-size: clamp(20px, 6vw, 26px); }
   h3 { font-size: clamp(16px, 5vw, 20px); }
 }
 
-
-/* 
-   NAVBAR HAMBURGER 
-   */
+/* ============================================================
+   10. NAVBAR HAMBURGER
+   ============================================================ */
 
 /* Couleur du bouton hamburger (icône blanche sur fond sombre) */
 .navbar-toggler {
@@ -940,9 +971,9 @@ h1, h2, h3 {
   }
 }
 
-
-/* ── 1. DARK MODE ─── */
-
+/* ============================================================
+   11. MODE SOMBRE (dark mode)
+   ============================================================ */
 body.dark-mode {
   background-color: #0D1F14;
   color: #C8D8D0;
@@ -974,10 +1005,7 @@ body.dark-mode footer {
   background-color: #0A1A10;
 }
 
-
-/* ── 2. BOUTON DARK MODE dans la navbar ─────── */
-
-
+/* Bouton bascule dark mode, dans la navbar */
 #theme-toggle {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -989,18 +1017,18 @@ body.dark-mode footer {
   cursor: pointer;
 }
 
+/* ============================================================
+   12. NAVBAR AU SCROLL / BOUTON RETOUR EN HAUT / FONDU AU SCROLL
+   ============================================================ */
 
-/* ── 3. NAVBAR AU SCROLL ────────────────────── */
-
+/* Navbar légèrement rétrécie une fois qu'on a scrollé */
 .navbar--scrolled {
   padding-top: 8px;
   padding-bottom: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-
-/* ── 4. BOUTON RETOUR EN HAUT ───────────────── */
-
+/* Bouton flottant "retour en haut" */
 #back-to-top {
   position: fixed;
   bottom: 30px;
@@ -1017,7 +1045,7 @@ body.dark-mode footer {
   color: white;
   font-size: 20px;
 
-  display: none; /* caché par défaut, le JS l'affiche */
+  display: none; /* caché par défaut, affiché par le JS après 300px de scroll */
   align-items: center;
   justify-content: center;
 }
@@ -1025,16 +1053,15 @@ body.dark-mode footer {
 #back-to-top:hover {
   background-color: #1a3e29;
 }
-/* État de départ : invisible + décalé vers le bas */
+
+/* Fondu progressif des sections au scroll (voir main.js) */
 .fade-in-section {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
- 
-/* État final : visible (classe ajoutée par le JS) */
+
 .fade-in-section.visible {
   opacity: 1;
   transform: translateY(0);
 }
- 
